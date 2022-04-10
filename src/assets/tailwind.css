@@ -1,0 +1,27 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
+.font_paytone{
+  font-family: 'Paytone One',sans-serif;
+}
+
+.hint_text {
+  @apply text-sm -mt-2 mb-2 text-red_x;
+}
+
+.base_btn {
+  @apply w-full border-2 text-center p-4 rounded-lg h-14 text-white;
+}
+
+.disable_btn{
+  @apply bg-gray_s border-gray_xxs;
+}
+
+.base_input {
+  @apply w-full border-2 border-black_x py-4 px-6 mb-4 h-12;
+}
