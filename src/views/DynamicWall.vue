@@ -4,65 +4,23 @@
     <div class="container mx-auto w-11/12 md:w-9/12 xl:w-7/12">
       <div class="flex justify-between items-start py-4 md:py-12">
         <div class="w-7/12">
-          <div class="flex justify-between mb-4">
-            <select class="base_select w-40" aria-label=".form-select-lg">
-                <option selected>最新貼文</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <div class="w-63 flex">
-              <input type="text" class="w-full border-2 px-4 focus:bg-white focus:outline-none" placeholder="搜尋貼文">
-              <button class="w-11 bg-blue_x border-2 border-l-0">
-                <svg class="w-6 h-6 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              </button>
-            </div>
-          </div>
-          <ul>
-            <li v-for="(post, idx) in posts" :key="idx" class="post-item mb-4">
-              <div class="flex items-center">
-                <img class="base_circle w-11 h-11" :src="post.userImg" alt="user_photo">
-                <div class="ml-4">
-                  <p class="font-bold">{{ post.name }}</p>
-                  <p class="text-gray_m text-xs">{{ post.createdAt }}</p>
-                </div>
-              </div>
-              <div class="my-4">
-                <div class="mb-4">{{ post.content }}</div>
-                <div v-if="post.banner" class="border-1 rounded-lg">
-                  <img :src="post.banner" alt="post_image">
-                </div>
-              </div>
-              <div class="flex items-center">
-                <svg class="w-5 h-5 mr-1" :class="post.likes > 0 ? 'text-blue_x': 'text-gray_m'" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
-                <span :class="post.likes > 0 ? 'text-black_x': 'text-gray_m'">{{ post.likes ? post.likes: '成為第一個按讚的朋友' }}</span>
-              </div>
-              <div class="flex items-center my-4">
-                <img class="base_circle w-10 h-10 mr-2" :src="post.userImg" alt="user_photo">
-                <div class="w-full h-10 flex">
-                  <input type="text" class="w-full border-2 px-4 focus:bg-white focus:outline-none" placeholder="留言...">
-                  <button class="w-2/5 border-2 border-l-0" :class="post.isSubmitMsg ? 'bg-yellow' : 'bg-blue_x'" @click="submitMsg(post, idx)">
-                    <span :class="post.isSubmitMsg ? '' : 'text-white'">留言</span>
-                    <span v-if="post.isSubmitMsg">...</span>
-                  </button>
-                </div>
-              </div>
-              <ul v-if="post.messages.length > 0">
-                <li v-for="(msg, idx) in post.messages" :key="idx" class="bg-brown_x rounded-xl mb-2 p-4">
-                  <div class="flex items-start">
-                    <img class="base_circle w-11 h-11" :src="msg.headerImg" alt="user_photo">
-                    <div class="ml-4">
-                      <p class="font-bold">{{ msg.name }}</p>
-                      <p class="text-gray_m text-xs mb-2">{{ msg.createdAt }}</p>
-                      <p>{{ msg.content }}</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <PostsWall v-if="changeKey === 'posts'"></PostsWall>
+          <TrackList v-if="changeKey === 'trackList'"></TrackList>
+          <LikedArticles v-if="changeKey === 'likedArticles'"></LikedArticles>
         </div>
-        <Menu></Menu>
+        <div class="w-2/5 border-2 bg-white p-6">
+          <button class="base_btn blue_btn hover:bg-yellow hover:text-black_x" type="button">張貼動態</button>
+          <ul>
+            <li v-for="(item, idx) in menu" :key="idx" class="menu_item flex items-center my-5 mx-1 cursor-pointer" @click.prevent="changeKey(item.key)">
+              <div class="base_circle bg-blue_xs w-12 h-12 mr-4">
+                <img v-if="item.img" :src="item.img">
+                <svg v-if="item.icon === 'bell'" class="w-7 h-7 mx-auto my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                <svg v-if="item.icon === 'thumb-up'" class="w-7 h-7 mx-auto my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
+              </div>
+              <p class="font-bold">{{ item.title }}</p>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
   </div>
@@ -70,90 +28,50 @@
 
 <script>
 import Header from '@/components/Header.vue'
-import Menu from '@/components/Menu.vue'
+// import Menu from '@/components/Menu.vue'
+import PostsWall from '@/components/PostsWall.vue'
+import TrackList from '@/components/TrackList.vue'
+import LikedArticles from '@/components/LikedArticles.vue'
+
 export default {
   name: 'dynamicWall',
   components: {
     Header,
-    Menu
+    // Menu,
+    PostsWall,
+    TrackList,
+    LikedArticles
   },
   data () {
     return {
-      posts: [
-        {
-          name: '邊緣小杰',
-          userImg: require('@/assets/user.png'),
-          content: '外面看起來就超冷.... 我決定回被窩繼續睡....>.<',
-          banner: require('@/assets/banner_01.png'),
-          createdAt: '2022/1/10 12:00',
-          likes: 12,
-          messages: [
-            {
-              name: '希琳',
-              headerImg: require('@/assets/user.png'),
-              createdAt: '2022/1/11 10:00',
-              content: '真的～我已經準備冬眠了'
-            },
-            {
-              name: '波吉',
-              headerImg: require('@/assets/user.png'),
-              createdAt: '2022/1/11 10:00',
-              content: '會嗎？我沒穿衣服都不覺得冷'
-            }
-          ],
-          isSubmitMsg: false
-        },
-        {
-          name: '波吉',
-          userImg: require('@/assets/user.png'),
-          content: '我一定要成為很棒棒的國王！',
-          banner: '',
-          createdAt: '2022/1/10 12:00',
-          likes: 0,
-          messages: [],
-          isSubmitMsg: false
-        },
-        {
-          name: '阿爾敏',
-          userImg: require('@/assets/user.png'),
-          content: '各位我有一個作戰計畫',
-          banner: '',
-          createdAt: '2022/1/10 12:00',
-          likes: 7,
-          messages: [],
-          isSubmitMsg: false
-        }
-      ],
+      changeKey: 'posts',
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user.png'),
-          icon: ''
+          img: require('@/assets/user.png')
         },
         {
           title: '追蹤名單',
-          icon: 'bell'
+          icon: 'bell',
+          Key: 'trackList'
         },
         {
           title: '我按讚的文章',
-          icon: 'thumb-up'
+          icon: 'thumb-up',
+          Key: 'likedArticles'
         }
       ]
     }
   },
-  methods: {
-    submitMsg (data, idx) {
-      data.isSubmitMsg = true
+  watch: {
+    changeKey (key) {
+      return key
     }
   }
 }
 </script>
 
 <style lang="scss">
-.w-63{
-  width: 63%;
-}
-
 .menu_item:hover, .menu_item:active {
   .base_circle{
     @apply bg-blue_x text-white;

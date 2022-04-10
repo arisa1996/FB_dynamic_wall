@@ -27,5 +27,11 @@ module.exports = {
       white: '#ffffff'
     }
   },
+  variants: {
+    extend: {
+      backgroundColor: ['odd', 'even'],
+      borderWidth: ['first', 'last']
+    }
+  },
   plugins: []
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="w-2/5 border-2 bg-white p-6">
-      <button class="base_btn blue_btn" type="button">張貼動態</button>
+      <button class="base_btn blue_btn hover:bg-yellow hover:text-black_x" type="button">張貼動態</button>
       <ul>
         <li v-for="(item, idx) in menu" :key="idx" class="menu_item flex items-center my-5 mx-1 cursor-pointer">
           <div class="base_circle bg-blue_xs w-12 h-12 mr-4">
@@ -21,16 +21,17 @@ export default {
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user.png'),
-          icon: ''
+          img: require('@/assets/user.png')
         },
         {
           title: '追蹤名單',
-          icon: 'bell'
+          icon: 'bell',
+          Key: 'trackList'
         },
         {
           title: '我按讚的文章',
-          icon: 'thumb-up'
+          icon: 'thumb-up',
+          Key: 'likedArticles'
         }
       ]
     }
