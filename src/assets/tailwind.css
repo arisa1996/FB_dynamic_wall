@@ -15,7 +15,11 @@
 }
 
 .base_btn {
-  @apply w-full border-2 text-center p-4 rounded-lg h-14 text-white;
+  @apply w-full border-2 text-center p-4 rounded-lg h-14 text-white font-semibold;
+}
+
+.blue_btn {
+  @apply bg-blue_x shadow-btn border-black_x;
 }
 
 .disable_btn{
@@ -24,4 +28,16 @@
 
 .base_input {
   @apply w-full border-2 border-black_x py-4 px-6 mb-4 h-12;
+}
+
+.base_select {
+  @apply appearance-none block bg-white bg-clip-padding bg-no-repeat border-2 border-black_x py-2 px-4 transition ease-in-out focus:bg-white focus:outline-none;
+}
+
+.base_circle {
+  @apply border-2 border-black_x rounded-full;
+}
+
+.post-item {
+  @apply bg-white border-2 border-black_x rounded-lg shadow-post p-6;
 }

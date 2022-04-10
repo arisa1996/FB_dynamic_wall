@@ -4,14 +4,15 @@ module.exports = {
     extend: {
       boxShadow: {
         'login': '-8px 8px 0px #00040029',
-        'btn': '-2px 2px 0px #000400'
+        'btn': '-2px 2px 0px #000400',
+        'post': '0px 3px 0px #000400'
       },
       lineHeight: {
         '11': '50px'
       }
     },
     colors: {
-      loginBg: '#EFECE7',
+      brown_x: '#EFECE7',
       red_x: '#F57375',
       yellow: '#EEC32A',
       blue_xs: '#E2EDFA',

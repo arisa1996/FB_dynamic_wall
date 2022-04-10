@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto h-screen flex items-center">
-    <div class="login_box flex border-2 border-black_x shadow-login bg-loginBg max-w-4xl mx-auto py-24 px-12">
+    <div class="login_box flex border-2 border-black_x shadow-login bg-brown_x max-w-4xl mx-auto py-24 px-12">
       <img src="@/assets/login.svg" alt="login" class="w-2/5">
       <div class="content w-3/5 px-12">
         <img src="@/assets/metaWall.png" alt="MetaWall" class="mx-auto -mt-4">
@@ -13,7 +13,7 @@
               帳號或密碼錯誤，請重新輸入！
             </p>
             <button v-if="hint.isDisable" class="base_btn disable_btn">登入</button>
-            <button v-else class="base_btn bg-blue_x shadow-btn border-black_x" type="button" @click="loginAccount()">登入</button>
+            <button v-else class="base_btn blue_btn" type="button" @click="loginAccount()">登入</button>
           </form>
         </div>
         <div v-else>

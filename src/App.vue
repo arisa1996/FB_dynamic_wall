@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-loginBg text-black_x">
+  <div id="app" class="bg-brown_x text-black_x">
     <router-view/>
   </div>
 </template>
