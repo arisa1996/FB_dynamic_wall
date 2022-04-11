@@ -34,8 +34,8 @@
             <button class="base_btn disable_btn" @click="registerAccount()">註冊</button>
           </form>
         </div>
-        <div v-if="!isRegister" class="mt-4 text-center font-semibold cursor-pointer" @click.prevent="isRegister = true; cleanForm()">註冊帳號</div>
-        <div v-else class="mt-4 text-center font-semibold cursor-pointer" @click.prevent="isRegister = false; cleanForm()">登入</div>
+        <div v-if="!isRegister" class="mt-4 text-center cursor-pointer" @click.prevent="isRegister = true; cleanForm()">註冊帳號</div>
+        <div v-else class="mt-4 text-center cursor-pointer" @click.prevent="isRegister = false; cleanForm()">登入</div>
       </div>
     </div>
   </div>

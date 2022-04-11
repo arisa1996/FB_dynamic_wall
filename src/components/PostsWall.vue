@@ -17,7 +17,9 @@
     <ul v-if="posts">
       <li v-for="(post, idx) in posts" :key="idx" class="post-item mb-4 p-6">
         <div class="flex items-center">
-          <img class="base_circle w-11 h-11" :src="post.userImg" alt="user_photo">
+          <div class="base_circle w-11 h-11">
+            <img v-if="post.userImg" :src="post.userImg" :alt="post.name">
+          </div>
           <div class="posted_by ml-4 cursor-pointer">
             <p class="font-bold name">{{ post.name }}</p>
             <p class="text-gray_m text-xs">{{ post.createdAt }}</p>
@@ -26,7 +28,7 @@
         <div class="my-4">
           <div class="mb-4">{{ post.content }}</div>
           <div v-if="post.banner" class="border-1 rounded-lg">
-            <img :src="post.banner" alt="post_image">
+            <img v-if="post.banner" :src="post.banner" alt="post_image">
           </div>
         </div>
         <div class="flex items-center">
@@ -34,7 +36,9 @@
           <span :class="post.likes > 0 ? 'text-black_x': 'text-gray_m'">{{ post.likes ? post.likes: '成為第一個按讚的朋友' }}</span>
         </div>
         <div class="flex items-center my-4">
-          <img class="base_circle w-10 h-10 mr-2" :src="post.userImg" alt="user_photo">
+          <div class="base_circle w-10 h-10 mr-2">
+            <img v-if="post.userImg" :src="post.userImg">
+          </div>
           <div class="w-full h-10 flex">
             <input type="text" class="w-full border-2 px-4 focus:bg-white focus:outline-none" placeholder="留言...">
             <button class="w-2/5 border-2 border-l-0 flex items-center justify-center" :class="post.isSubmitMsg ? 'bg-yellow' : 'bg-blue_x'" @click="submitMsg(post, idx)">
@@ -47,7 +51,9 @@
         <ul v-if="post.messages.length > 0">
           <li v-for="(msg, idx) in post.messages" :key="idx" class="bg-brown_x rounded-xl mb-2 p-4">
             <div class="flex items-start">
-              <img class="base_circle w-11 h-11" :src="msg.headerImg" alt="user_photo">
+              <div class="base_circle w-11 h-11">
+                <img v-if="msg.headerImg" :src="msg.headerImg">
+              </div>
               <div class="ml-4">
                 <p class="font-bold">{{ msg.name }}</p>
                 <p class="text-gray_m text-xs mb-2">{{ msg.createdAt }}</p>
@@ -72,7 +78,7 @@ export default {
       posts: [
         {
           name: '邊緣小杰',
-          userImg: require('@/assets/user.png'),
+          userImg: require('@/assets/user6.png'),
           content: '外面看起來就超冷.... 我決定回被窩繼續睡....>.<',
           banner: require('@/assets/banner_01.png'),
           createdAt: '2022/1/10 12:00',
@@ -80,13 +86,13 @@ export default {
           messages: [
             {
               name: '希琳',
-              headerImg: require('@/assets/user.png'),
+              headerImg: require('@/assets/user1.png'),
               createdAt: '2022/1/11 10:00',
               content: '真的～我已經準備冬眠了'
             },
             {
               name: '波吉',
-              headerImg: require('@/assets/user.png'),
+              headerImg: require('@/assets/user5.png'),
               createdAt: '2022/1/11 10:00',
               content: '會嗎？我沒穿衣服都不覺得冷'
             }
@@ -95,7 +101,7 @@ export default {
         },
         {
           name: '波吉',
-          userImg: require('@/assets/user.png'),
+          userImg: require('@/assets/user5.png'),
           content: '我一定要成為很棒棒的國王！',
           banner: '',
           createdAt: '2022/1/10 12:00',
@@ -105,7 +111,7 @@ export default {
         },
         {
           name: '阿爾敏',
-          userImg: require('@/assets/user.png'),
+          userImg: require('@/assets/user4.png'),
           content: '各位我有一個作戰計畫',
           banner: '',
           createdAt: '2022/1/10 12:00',
@@ -117,7 +123,7 @@ export default {
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user.png'),
+          img: require('@/assets/user6.png'),
           icon: ''
         },
         {
@@ -140,10 +146,6 @@ export default {
 </script>
 
 <style lang="scss">
-.w-63{
-  width: 63%;
-}
-
 .posted_by:hover {
   .name{
     @apply text-blue_x underline;

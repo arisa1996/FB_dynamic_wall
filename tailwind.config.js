@@ -30,7 +30,8 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ['odd', 'even'],
-      borderWidth: ['first', 'last']
+      borderWidth: ['first', 'last'],
+      margin: ['first', 'last']
     }
   },
   plugins: []

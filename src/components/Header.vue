@@ -4,7 +4,9 @@
     <div class="flex justify-between items-center py-2 font_paytone">
       <h1 class="text-2xl font-black">MetaWall</h1>
       <div class="userInfo flex relative cursor-pointer">
-        <img class="base_circle w-8 h-8" src="@/assets/user.png" alt="user">
+        <div class="base_circle w-8 h-8">
+          <img v-if="userImg" :src="userImg" alt="user">
+        </div>
         <p class="border-b-2 border-black_x ml-2.5 font-medium">Member</p>
         <nav class="w-44 z-50 bg-white absolute top-9 left-0">
           <ul class="border-2">
@@ -36,7 +38,8 @@ export default {
           title: '登出',
           routeKey: ''
         }
-      ]
+      ],
+      userImg: require('@/assets/user6.png')
     }
   }
 }
