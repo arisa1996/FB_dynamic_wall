@@ -36,41 +36,41 @@ export default {
       list: [
         {
           name: '愛爾敏',
-          img: require('@/assets/user5.png'),
+          img: require('@/assets/image/user5.png'),
           isLiked: true,
           createdAt: '2022/2/14 12:00'
         },
         {
           name: '愛爾敏',
-          img: require('@/assets/user5.png'),
+          img: require('@/assets/image/user5.png'),
           isLiked: true,
           checkUrl: '',
           createdAt: '2022/1/24 15:30'
         },
         {
           name: '米卡莎',
-          img: require('@/assets/user2.png'),
+          img: require('@/assets/image/user2.png'),
           isLiked: true,
           checkUrl: '',
           createdAt: '2022/1/10 14:20'
         },
         {
           name: '李維',
-          img: require('@/assets/user1.png'),
+          img: require('@/assets/image/user1.png'),
           isLiked: true,
           checkUrl: '',
           createdAt: '2021/12/4 12:12'
         },
         {
           name: '米歇爾',
-          img: require('@/assets/user4.png'),
+          img: require('@/assets/image/user4.png'),
           isLiked: true,
           checkUrl: '',
           createdAt: '2021/12/2 22:00'
         },
         {
           name: '希琳',
-          img: require('@/assets/user3.png'),
+          img: require('@/assets/image/user3.png'),
           isLiked: true,
           checkUrl: '',
           createdAt: '2021/12/2 22:00'

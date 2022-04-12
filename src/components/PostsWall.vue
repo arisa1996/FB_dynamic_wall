@@ -78,21 +78,21 @@ export default {
       posts: [
         {
           name: '邊緣小杰',
-          userImg: require('@/assets/user6.png'),
+          userImg: require('@/assets/image/user6.png'),
           content: '外面看起來就超冷.... 我決定回被窩繼續睡....>.<',
-          banner: require('@/assets/banner_01.png'),
+          banner: require('@/assets/image/banner_01.png'),
           createdAt: '2022/1/10 12:00',
           likes: 12,
           messages: [
             {
               name: '希琳',
-              headerImg: require('@/assets/user1.png'),
+              headerImg: require('@/assets/image/user1.png'),
               createdAt: '2022/1/11 10:00',
               content: '真的～我已經準備冬眠了'
             },
             {
               name: '波吉',
-              headerImg: require('@/assets/user5.png'),
+              headerImg: require('@/assets/image/user5.png'),
               createdAt: '2022/1/11 10:00',
               content: '會嗎？我沒穿衣服都不覺得冷'
             }
@@ -101,7 +101,7 @@ export default {
         },
         {
           name: '波吉',
-          userImg: require('@/assets/user5.png'),
+          userImg: require('@/assets/image/user5.png'),
           content: '我一定要成為很棒棒的國王！',
           banner: '',
           createdAt: '2022/1/10 12:00',
@@ -111,7 +111,7 @@ export default {
         },
         {
           name: '阿爾敏',
-          userImg: require('@/assets/user4.png'),
+          userImg: require('@/assets/image/user4.png'),
           content: '各位我有一個作戰計畫',
           banner: '',
           createdAt: '2022/1/10 12:00',
@@ -123,7 +123,7 @@ export default {
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user6.png'),
+          img: require('@/assets/image/user6.png'),
           icon: ''
         },
         {

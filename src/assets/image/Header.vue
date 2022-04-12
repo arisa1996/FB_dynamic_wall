@@ -55,7 +55,12 @@ export default {
     @apply text-blue_x;
   }
 }
-
+// .userInfo:hover nav{
+//   display: block;
+// }
+// nav{
+//   display: none;
+// }
 nav::after{
   content: '';
   width: 176px;

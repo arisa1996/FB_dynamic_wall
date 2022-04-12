@@ -1,9 +1,9 @@
 <template>
   <div class="mx-auto h-screen flex items-center">
     <div class="login_box flex border-2 border-black_x shadow-login bg-brown_x max-w-4xl mx-auto py-24 px-12">
-      <img src="@/assets/login.svg" alt="login" class="w-2/5">
+      <img src="@/assets/image/login.svg" alt="login" class="w-2/5">
       <div class="content w-3/5 px-12">
-        <img src="@/assets/metaWall.png" alt="MetaWall" class="mx-auto -mt-4">
+        <img src="@/assets/image/metaWall.png" alt="MetaWall" class="mx-auto -mt-4">
         <div v-if="!isRegister">
           <p class="text-center text-2xl font-extrabold mb-9">到元宇宙展開全新社交圈</p>
           <form>

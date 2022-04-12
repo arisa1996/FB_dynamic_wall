@@ -4,14 +4,16 @@
     <div class="container mx-auto w-11/12 md:w-9/12 xl:w-7/12">
       <div class="flex justify-between items-start py-4 md:py-12">
         <div class="w-7/12">
-          <PostsWall v-if="changeKey === 'posts'"></PostsWall>
-          <TrackList v-if="changeKey === 'trackList'"></TrackList>
-          <LikedArticles v-if="changeKey === 'likedArticles'"></LikedArticles>
+          <PostsWall v-if="defaultKey === 'posts'"></PostsWall>
+          <TrackList v-if="defaultKey === 'trackList'"></TrackList>
+          <LikedArticles v-if="defaultKey === 'likedArticles'"></LikedArticles>
+          <PersonalInfo v-if="defaultKey === 'personalInfo'"></PersonalInfo>
+          <PostNews v-if="defaultKey === 'postNews'"></PostNews>
         </div>
         <div class="w-38 border-2 bg-white p-6">
           <button class="base_btn blue_btn hover:bg-yellow hover:text-black_x" type="button">張貼動態</button>
           <ul>
-            <li v-for="(item, idx) in menu" :key="idx" class="menu_item flex items-center my-5 mx-1 cursor-pointer last:mb-0" @click.prevent="changeKey(item.key)">
+            <li v-for="(item, idx) in menu" :key="idx" class="menu_item flex items-center my-5 mx-1 cursor-pointer last:mb-0" @click.prevent="change()">
               <div class="base_circle bg-blue_xs w-12 h-12 mr-4">
                 <img v-if="item.img" :src="item.img">
                 <svg v-if="item.icon === 'bell'" class="w-7 h-7 mx-auto my-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
@@ -32,6 +34,8 @@ import Header from '@/components/Header.vue'
 import PostsWall from '@/components/PostsWall.vue'
 import TrackList from '@/components/TrackList.vue'
 import LikedArticles from '@/components/LikedArticles.vue'
+import PersonalInfo from '@/components/PersonalInfo.vue'
+import PostNews from '@/components/PostNews.vue'
 
 export default {
   name: 'dynamicWall',
@@ -40,15 +44,17 @@ export default {
     // Menu,
     PostsWall,
     TrackList,
-    LikedArticles
+    LikedArticles,
+    PersonalInfo,
+    PostNews
   },
   data () {
     return {
-      changeKey: 'posts',
+      defaultKey: 'trackList',
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user6.png')
+          img: require('@/assets/image/user6.png')
         },
         {
           title: '追蹤名單',
@@ -61,11 +67,6 @@ export default {
           Key: 'likedArticles'
         }
       ]
-    }
-  },
-  watch: {
-    changeKey (key) {
-      return key
     }
   }
 }

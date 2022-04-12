@@ -21,7 +21,7 @@ export default {
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/user6.png')
+          img: require('@/assets/image/user6.png')
         },
         {
           title: '追蹤名單',
