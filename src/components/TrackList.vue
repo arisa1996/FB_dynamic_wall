@@ -9,8 +9,8 @@
           <div class="no_border_circle">
             <img v-if="item.img" :src="item.img" :alt="item.name">
           </div>
-          <div class="ml-4">
-            <p class="font-extrabold">{{ item.name }}</p>
+          <div class="ml-4 cursor-pointer" @click="$emit('change-key', item.key)">
+            <p class="font-extrabold hover:text-blue_x hover:underline">{{ item.name }}</p>
             <p class="text-gray_m text-sm">追蹤時間：{{ item.createdAt }}</p>
           </div>
         </div>
@@ -29,6 +29,7 @@ export default {
           name: '波吉',
           img: require('@/assets/image/user5.png'),
           tracks: 90,
+          key: 'personalDynamics',
           createdAt: '2022/2/14 12:00'
         },
         {
@@ -56,6 +57,12 @@ export default {
           createdAt: '2021/12/2 22:00'
         }
       ]
+    }
+  },
+  props: {
+    changeKey: {
+      title: Function,
+      default: () => {}
     }
   }
 }

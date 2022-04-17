@@ -5,10 +5,11 @@
       <div class="flex justify-between items-start py-4 md:py-12">
         <div class="w-7/12">
           <PostsWall v-if="defaultKey === 'posts'"></PostsWall>
-          <TrackList v-if="defaultKey === 'trackList'"></TrackList>
+          <TrackList v-if="defaultKey === 'trackList'" @change-key="changeKey"></TrackList>
           <LikedArticles v-if="defaultKey === 'likedArticles'"></LikedArticles>
           <PersonalInfo v-if="defaultKey === 'personalInfo'"></PersonalInfo>
           <PostNews v-if="defaultKey === 'postNews'"></PostNews>
+          <PersonalDynamics v-if="defaultKey === 'personalDynamics'"></PersonalDynamics>
         </div>
         <div class="w-38 border-2 bg-white p-6">
           <button class="base_btn blue_btn hover:bg-yellow hover:text-black_x" type="button" @click="defaultKey = 'postNews'">張貼動態</button>
@@ -35,6 +36,7 @@ import TrackList from '@/components/TrackList.vue'
 import LikedArticles from '@/components/LikedArticles.vue'
 import PersonalInfo from '@/components/PersonalInfo.vue'
 import PostNews from '@/components/PostNews.vue'
+import PersonalDynamics from '@/components/PersonalDynamics.vue'
 
 export default {
   name: 'dynamicWall',
@@ -44,7 +46,8 @@ export default {
     TrackList,
     LikedArticles,
     PersonalInfo,
-    PostNews
+    PostNews,
+    PersonalDynamics
   },
   data () {
     return {
@@ -52,7 +55,8 @@ export default {
       menu: [
         {
           title: '邊緣小杰',
-          img: require('@/assets/image/user6.png')
+          img: require('@/assets/image/user6.png'),
+          key: ''
         },
         {
           title: '追蹤名單',

@@ -2,9 +2,13 @@ module.exports = {
   content: ['./public/**/*.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'main-bg': 'url(../assets/image/main_bg.jpg)'
+      },
       boxShadow: {
         'login': '-8px 8px 0px #00040029',
         'btn': '-2px 2px 0px #000400',
+        'btn-bottom': '0px 2px 0px #000400',
         'post': '0px 3px 0px #000400'
       },
       lineHeight: {

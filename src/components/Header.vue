@@ -2,7 +2,7 @@
 <div class="bg-white border-b-4">
   <div class="container mx-auto w-11/12 md:w-9/12 xl:w-7/12">
     <div class="flex justify-between items-center py-2 font_paytone">
-      <h1 class="text-2xl font-black">MetaWall</h1>
+      <h1 class="text-2xl font-black cursor-pointer" @click="$emit('change-key', 'posts')">MetaWall</h1>
       <div class="flex relative cursor-pointer" @mouseover="openNav = true">
         <div class="base_circle w-8 h-8">
           <img v-if="userImg" :src="userImg" alt="user">
